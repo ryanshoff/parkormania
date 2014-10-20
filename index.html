@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Parkour Mania</title>
+        <script src="phaser.js"></script>
+        <script src="phaser-touch-control.js" type="text/javascript"></script>
+        <script src="parkourmania.js" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <div id="parkormania"></div>
+
+<script type="text/javascript">
+
+window.onload = function() {
+	var game = new Phaser.Game(800, 600, Phaser.Auto, 'parkourmania');
+	game.state.add('Boot', BasicGame.Boot);
+	game.state.add('Preloader', BasicGame.Preloader);
+	game.state.add('MainMenu', BasicGame.MainMenu);
+	game.state.add('Game', BasicGame.Game);
+	game.state.start('Preloader');
+};
+
+</script>
+
+    </body>
+</html>
