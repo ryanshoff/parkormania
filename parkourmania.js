@@ -52,6 +52,7 @@ BasicGame.Preloader.prototype = {
     this.load.image('tiles-1', 'tiles-1.png');
     this.load.spritesheet('dude', 'dude.png', 32, 48);
     this.load.spritesheet('droid', 'droid.png', 32, 32);
+    this.load.spritesheet('kate', 'kate2.png', 143, 200);
     this.load.image('starSmall', 'star.png');
     this.load.image('starBig', 'star2.png');
     this.load.image('background', 'background2.png');
@@ -139,12 +140,13 @@ BasicGame.Game.prototype = {
     player.animations.add('turn', [4], 20, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 
-    robot = this.add.sprite(332, 32, 'droid');
+    //robot = this.add.sprite(332, 32, 'droid');
+    robot = this.add.sprite(332, 32, 'kate');
     this.physics.enable(robot, Phaser.Physics.ARCADE);
 
     robot.body.bounce.y = 0.2;
     robot.body.collideWorldBounds = true;
-    robot.body.setSize(20, 32, 5, 16);
+    //robot.body.setSize(20, 32, 5, 16);
     robot.events.onKilled.add(robotkilled);
 
     robot.animations.add('move', [0, 1, 2, 3], 10, true);
