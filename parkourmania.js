@@ -52,7 +52,7 @@ BasicGame.Preloader.prototype = {
     this.load.image('tiles-1', 'tiles-1.png');
     this.load.spritesheet('dude', 'dude.png', 32, 48);
     this.load.spritesheet('droid', 'droid.png', 32, 32);
-    this.load.spritesheet('kate', 'kate2.png', 143, 200);
+    this.load.spritesheet('kate', 'kate2.png', 53, 75);
     this.load.image('starSmall', 'star.png');
     this.load.image('starBig', 'star2.png');
     this.load.image('background', 'background2.png');
@@ -143,13 +143,16 @@ BasicGame.Game.prototype = {
     //robot = this.add.sprite(332, 32, 'droid');
     robot = this.add.sprite(332, 32, 'kate');
     this.physics.enable(robot, Phaser.Physics.ARCADE);
+    robot.anchor.setTo(.5,.5);
+    robot.scale.x = -1;
 
     robot.body.bounce.y = 0.2;
     robot.body.collideWorldBounds = true;
     //robot.body.setSize(20, 32, 5, 16);
     robot.events.onKilled.add(robotkilled);
 
-    robot.animations.add('move', [0, 1, 2, 3], 10, true);
+    //robot.animations.add('move', [0, 1, 2, 3], 10, true);
+    robot.animations.add('move', [0, 2], 5, true);
 
     this.camera.follow(player);
 
@@ -165,7 +168,7 @@ BasicGame.Game.prototype = {
     this.physics.arcade.collide(robot, layer);
     this.physics.arcade.collide(player, robot, collisionHandler, null, this);
 
-    robot.body.velocity.x = 15;
+    robot.body.velocity.x = 25;
     robot.animations.play('move');
 
     player.body.velocity.x = 0;
