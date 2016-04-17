@@ -1,0 +1,23 @@
+{
+  "name": "packormania",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parkourmania.js",
+  "scripts": {
+    "start": "webpack-dev-server --host 0.0.0.0",
+    "prod": "webpack -p"
+  },
+  "author": "Ryan Shoff <ryanshoff@gmail.com> (http://ryanshoff.com)",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-react": "^6.3.13",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.7.1",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

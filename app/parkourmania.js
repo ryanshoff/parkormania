@@ -1,3 +1,4 @@
+var Phaser = require("phaser");
 var BasicGame = {};
 var style = { font: "40px Arial", fill: "#ff0044", align: "left" };
 var smallstyle = { font: "30px Arial", fill: "#ff0044", align: "left" };
@@ -15,6 +16,8 @@ var quitbutton;
 var level = 'level1';
 var score = 0;
 var scoreText;
+
+
 
 function collisionHandler (obj1, obj2) {
 	robot.kill();
@@ -46,19 +49,19 @@ BasicGame.Preloader = function(game) {};
 BasicGame.Preloader.prototype = {
  preload: function() {
     console.log('BasicGame Preloader preload');
-    this.load.tilemap('level3', 'level3.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.tilemap('level2', 'level2.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.tilemap('level1', 'level1.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('tiles-1', 'tiles-1.png');
-    this.load.spritesheet('dude', 'dude.png', 32, 48);
-    this.load.spritesheet('droid', 'droid.png', 32, 32);
-    this.load.spritesheet('kate', 'kate2.png', 53, 75);
-    this.load.image('starSmall', 'star.png');
-    this.load.image('starBig', 'star2.png');
-    this.load.image('background', 'background2.png');
-    this.load.image('compass', 'compass_rose.png');
-    this.load.image('touch_segment', 'touch_segment.png');
-    this.load.image('touch', 'touch.png');
+    this.load.tilemap('level3', 'assets/level3.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('level2', 'assets/level2.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('level1', 'assets/level1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('tiles-1', 'assets/tiles-1.png');
+    this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    this.load.spritesheet('droid', 'assets/droid.png', 32, 32);
+    this.load.spritesheet('kate', 'assets/kate2.png', 53, 75);
+    this.load.image('starSmall', 'assets/star.png');
+    this.load.image('starBig', 'assets/star2.png');
+    this.load.image('background', 'assets/background2.png');
+    this.load.image('compass', 'assets/compass_rose.png');
+    this.load.image('touch_segment', 'assets/touch_segment.png');
+    this.load.image('touch', 'assets/touch.png');
  },
  create: function() {
 	console.log('BasicGame Preloader create');
@@ -233,3 +236,21 @@ BasicGame.Game.prototype = {
 
 //}
 
+class Game extends Phaser.Game {
+
+  constructor () {
+    let width = document.documentElement.clientWidth > 768 ? 768 : document.documentElement.clientWidth
+    let height = document.documentElement.clientHeight > 1024 ? 1024 : document.documentElement.clientHeight
+
+    super(width, height, Phaser.AUTO, 'parkourmania', null)
+
+    this.state.add('Boot', BasicGame.Boot);
+    this.state.add('Preloader', BasicGame.Preloader);
+    this.state.add('MainMenu', BasicGame.MainMenu);
+    this.state.add('Game', BasicGame.Game);
+    this.state.start('Preloader');
+
+  }
+}
+
+new Game()
