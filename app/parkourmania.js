@@ -56,6 +56,7 @@ BasicGame.Preloader.prototype = {
     this.load.spritesheet('dude', 'assets/dude.png', 32, 48);
     this.load.spritesheet('droid', 'assets/droid.png', 32, 32);
     this.load.spritesheet('kate', 'assets/kate2.png', 53, 75);
+    this.load.spritesheet('thormod', 'assets/thormod20.png', 122, 196);
     this.load.image('starSmall', 'assets/star.png');
     this.load.image('starBig', 'assets/star2.png');
     this.load.image('background', 'assets/background2.png');
@@ -144,7 +145,8 @@ BasicGame.Game.prototype = {
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 
     //robot = this.add.sprite(332, 32, 'droid');
-    robot = this.add.sprite(332, 32, 'kate');
+    //robot = this.add.sprite(332, 32, 'kate');
+    robot = this.add.sprite(332, 32, 'thormod');
     this.physics.enable(robot, Phaser.Physics.ARCADE);
     robot.anchor.setTo(.5,.5);
     robot.scale.x = -1;
@@ -155,7 +157,8 @@ BasicGame.Game.prototype = {
     robot.events.onKilled.add(robotkilled);
 
     //robot.animations.add('move', [0, 1, 2, 3], 10, true);
-    robot.animations.add('move', [0, 2], 5, true);
+    //robot.animations.add('move', [0, 2], 5, true);
+    robot.animations.add('move', [0, 1, 2, 3, 4, 5] , 5, true);
 
     this.camera.follow(player);
 
